@@ -15,17 +15,19 @@ app.use(express.json());
 app.use(postRoutes);
 app.use(userRoutes);
 
+app.use(express.static("uploads"));
+
 
 const PORT = process.env.PORT || 8080;
 
 const start = async () => {
-    
-    const connectDB= await mongoose.connect(process.env.MONGO_URI)
 
-    app.listen(PORT,()=>{
+    const connectDB = await mongoose.connect(process.env.MONGO_URI)
+
+    app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     })
-    
+
 };
 
 start();
